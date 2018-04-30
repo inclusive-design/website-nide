@@ -1,0 +1,107 @@
+<html><!-- #BeginTemplate "/Templates/nidePendulum.dwt" -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Java3D Haptics meeting 27 Oct 99</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="http://nide.snow.idrc.ocadu.ca/nidestyle.css">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h3 align="center"><img src="../NideHead.gif" width="559" height="120" alt="NIDE Logo"></h3>
+<h3 align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Network 
+  For Inclusive Distance Education</font></h3>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr>
+    <td height="21" bgcolor="#FFCC99" align="center">
+      <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/">Home</a></b>
+        </font></p>
+    </td>
+    <td height="21" bordercolor="#FFFFFF" bgcolor="#FFCC99" align="center">
+      <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/SyncComm/index.htm">
+        Synchronous Communication Tools</a></b></font></p>
+    </td>
+	<td  bgcolor="#FFCC99" align="center">
+	<font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/css">CSS Generator</a></b></font>
+	</td>
+  </tr>
+</table>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr>
+    <td height="21" bgcolor="#6699ff" align="center" width="366"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/Pendulum/index.html">Physics
+      Lab Haptic Pendulum Project</a></b></font></td>
+    <td height="21" bgcolor="#FFCC99" align="center" width="116"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://aprompt.snow.utoronto.ca/">A-Prompt</a></b></font>
+    </td>
+    <td height="21" bgcolor="#FFCC99" align="center" width="151"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/music/index.html">Music
+      Notation</a></b></font></td>
+  </tr>
+</table>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" bordercolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr>
+    <td bgcolor="#FFCC99" width="416" height="21" align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca//accessITL.htm">Interactive Learning Tools</a></b></font></td>
+    <td width="219" bgcolor="#FFCC99" height="21" align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/MathML/index.htm">MathML
+      Project</a></b></font></td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+
+
+<BLOCKQUOTE><!-- #BeginEditable "content" --> 
+  <h3 align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Java3D 
+    Haptics meeting 27 Oct 99</font></h3>
+  <h5><font face="Verdana, Arial, Helvetica, sans-serif"><strong>Present: DB, 
+    CR</strong></font></h5>
+  <h4><font face="Verdana, Arial, Helvetica, sans-serif">Recap:</font></h4>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif">Investigation, development, 
+    and testing has concluded:</font></p>
+  <ol>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif">There is a problem 
+      when the time delta between updates in the physical model is reduced too 
+      low. The Java3D visual update appears to hog CPU cycles. </font></li>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif">The java wrapper &quot;JHapi&quot; 
+      (or &quot;JNHapi&quot;), has not been extended to include the Direct Input 
+      stuff yet.</font></li>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif">ALAF - Joseph popped 
+      over to my office and we spent about a day and a half integrating the Audio 
+      Swing Pluggable Look and Feel into the Swing based pendulum application. 
+      We succeeded. A side-effect of this endeavor was that it helped identify 
+      the source of the problem discussed in '1.' above.</font></li>
+  </ol>
+  <h4><font face="Verdana, Arial, Helvetica, sans-serif">Direction:</font></h4>
+  <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><img src="mommi.png"
+alt="architectural diagram of physical model interacting with visual and haptic components."
+width="403" height="312" border="0"></font></p>
+  <ol>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif">To solve the CPU hogging 
+      I will first attempt the follwing solution: I will increase the <em>number 
+      of times per second</em> the physical model (PM) is updated (this is required 
+      for a smooth haptic effect), and balance this by decreasing the <em>number 
+      of times per PM update</em> the visual model is updated. Refer to MOMMI 
+      for illustration.</font></li>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif">My preferrence is to 
+      have the release version of the DirectX v.70 before proceeding with extending 
+      the JNHapi class.</font></li>
+  </ol>
+  <h4><font face="Verdana, Arial, Helvetica, sans-serif">Additional Notes:</font></h4>
+  <h5><font face="Verdana, Arial, Helvetica, sans-serif"><strong>Our next meeting 
+    is 10 Nov 99 at 10:15am.</strong></font></h5>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif">Morale is high and things 
+    are progressing well.</font></p>
+  <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><a href="index.html">Back 
+    to Physics Lab Haptic Pendulum Project</a></font></p>
+  <!-- #EndEditable -->
+  <div align="center">  <hr>
+    <p><a href="http://www.utoronto.ca/atrc/"><font face="Verdana, Arial, Helvetica, sans-serif">The 
+      Adaptive Technology Resource Centre</font></a></p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">J.P. Robarts 
+      Library, First Floor, University of Toronto Information Commons <br>
+      130 St. George St. Toronto, Ontario, Canada M5S 3H1 <br>
+      Telephone: (416) 978-4360 Fax: (416) 971-2629 </font></p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"> For additional information 
+      please e-mail <a href="http://www.utoronto.ca/atrc/reference/staff/harrison/harrison.html">Laurie 
+      Harrison</a></font></p>
+    </div>
+</BLOCKQUOTE>
+</body>
+<!-- #EndTemplate --></html>

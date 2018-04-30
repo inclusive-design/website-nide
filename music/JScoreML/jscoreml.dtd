@@ -1,0 +1,51 @@
+<!-- This DTD is largely based on (actually it is a subset with a few minor additions of) the ScoreML DTD created by P. Ciancarini, F. Vitali, P. Casarini, D. Fiorello and M. Romagnoli of 
+the University of Bologna (Italy), which is available at http://CariStudenti.CS.UniBO.IT/ids/gruppo_7/displets/data/scoreml.dtd -->
+
+<!ELEMENT score (song+)>
+
+<!ELEMENT song (staff+)>
+<!ATTLIST song 	title 	CDATA 	#IMPLIED 
+		author 	CDATA 	#IMPLIED 
+		bpm 	NMTOKEN #IMPLIED>
+
+<!ELEMENT staff (section+)>
+<!-- info is the instrument number id according to the MIDI standard -->
+<!ATTLIST staff info 	CDATA 	#IMPLIED>
+
+<!ELEMENT section (bar+)>
+<!ATTLIST section 	id 		ID 		#IMPLIED 
+			time_num 	NMTOKEN 	"4" 
+			time_den 	NMTOKEN 	"4" 
+			flats 		CDATA 		#IMPLIED 
+			sharps 		CDATA 		#IMPLIED 
+			clef 		(bass|treble) 	"treble"
+>
+
+<!ELEMENT bar (single)>
+<!ATTLIST bar 		id 		ID 		#IMPLIED
+			score_row 	NMTOKEN 	#IMPLIED
+>
+
+<!ELEMENT single ((chord|note|rest)+)>
+<!ATTLIST single 	id 	ID 	#IMPLIED>
+
+<!ELEMENT chord (note+)>
+
+<!ELEMENT rest EMPTY>
+<!ATTLIST rest		duration 	(1|2|4|8|16|32|64) 	"4"	
+			point 		(none|single) 		#IMPLIED
+			id		ID			#REQUIRED
+>
+
+<!ELEMENT note EMPTY>
+<!ATTLIST note 	id 		ID 				#REQUIRED 
+		value 		(c|d|e|f|g|a|b) 		#REQUIRED 
+		octave 		(0|1|2|3|4|5|6|7|8) 		"4" 
+		acciaccatura 	(none|flat|sharp) 		#IMPLIED 
+		duration 	(1|2|4|8|16|32|64) 		"4" 
+		point 		(single) 			#IMPLIED 
+		legato 		IDREF 				#IMPLIED	
+		dynamic 	(ppp|pp|p|mp|mf|f|ff|fff) 	#IMPLIED 
+		crescendo 	IDREF 				#IMPLIED 
+		diminuendo 	IDREF 				#IMPLIED
+>

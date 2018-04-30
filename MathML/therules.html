@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>NIDE: Math ML</title>
+<style type="text/css">
+<!--
+td {  font-family: Arial, Helvetica, sans-serif; color: #000000; text-decoration: none}
+a {  font-family: Arial, Helvetica, sans-serif; color: #000066; text-decoration: none}
+i { color: aa6633 }
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF">
+<h3 align="center"><img src="../NideHead.gif" width="559" height="120" alt="NIDE Logo"></h3>
+<h3 align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Network
+  For Inclusive Distance Education</font></h3>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr>
+    <td height="21" bgcolor="#FFCC99" align="center">
+      <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/">Home</a></b>
+        </font></p>
+    </td>
+    <td height="21" bordercolor="#FFFFFF" bgcolor="#FFCC99" align="center">
+      <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/SyncComm/index.htm">
+        Synchronous Communication Tools</a></b></font></p>
+    </td>
+	<td  bgcolor="#FFCC99" align="center">
+	<font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/css">CSS Generator</a></b></font>
+	</td>
+  </tr>
+</table>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr>
+    <td height="21" bgcolor="#FFCC99" align="center" width="366"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/Pendulum/index.html">Physics
+      Lab Haptic Pendulum Project</a></b></font></td>
+    <td height="21" bgcolor="#FFCC99" align="center" width="116"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://aprompt.snow.utoronto.ca/">A-Prompt</a></b></font>
+    </td>
+    <td height="21" bgcolor="#FFCC99" align="center" width="151"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/music/index.html">Music
+      Notation</a></b></font></td>
+  </tr>
+</table>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" bordercolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr>
+    <td bgcolor="#FFCC99" width="416" height="21" align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca//accessITL.htm">Interactive Learning Tools</a></b></font></td>
+    <td width="219" bgcolor="#6699ff" height="21" align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://nide.snow.idrc.ocadu.ca/MathML/index.htm">MathML
+      Project</a></b></font></td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+
+<BLOCKQUOTE><!-- #BeginEditable "content" -->
+  <h3 align="center"><font face="Verdana, Arial, Helvetica, sans-serif">MathML Accessibility Project</font></h3>
+
+<script language=javascript><!--
+  var smallWin = false;
+  function newWin(url2,height,width) {
+      smallWin = false;
+      smallWin = window.open(url2,"Code_Window","height="+height+",width="+width+",resizeable=yes,menubar=no,toolbar=no",true);
+  }
+//--></script>
+
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Audio Formatting Rules</font></b>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif">
+  Note: This is not the result of a MathML to JSML translation; All examples were coded
+  in JSML manually. Also, this is not a presentation of user context selection - the
+  expressions are derived making no further assumptions about the explicit MathML code.</p>
+
+  <p> These expressions were first created using TeX (Scientific Notebook 3.5), then
+  converted to MathML using TtM.
+  </p>
+
+<ul>
+
+<li> <b>Subscripts and superscripts</b>:<br>
+<br>
+&lt;msup&gt; m &lt;/msup&gt;<br>
+<i>sup &lt;PROS PITCH="+30%"&gt; * &lt;/PROS&gt;</i><br>
+<br>
+&lt;msub&gt; * &lt;/msub&gt;<br>
+<i>sub &lt;PROS PITCH="-30%"&gt; * &lt;/PROS&gt;</i><br>
+<br>
+&lt;power/&gt; *1 *2<br>
+<i>*1 raised &lt;PROS PITCH="+30%"&gt; *2 &lt;/PROS&gt;</i><br>
+<br>
+&lt;exp/&gt; * <br>
+<i>raised &lt;PROS PITCH="+30%"&gt; * &lt;/PROS&gt;</i><br>
+
+<br>
+Examples:<br>
+<center><img src=pythag.gif alt="gif image of math expression: alternate format links following"><br>
+- <a href="javascript:newWin('pythag.mml',400,400)">MathML Code</a>
+- <a href="javascript:newWin('pythag.tex',400,400)">TeX</a>
+- <a href=pythag.wav>JSML Audio</a>
+- </center>
+<center><img src=eraisedcomp.gif alt="gif image of math expression: alternate format links following"><br>
+- <a href="javascript:newWin('eraisedcomp.mml',400,400)">MathML Code</a>
+- <a href="javascript:newWin('eraisedcomp.tex',400,400)">TeX</a>
+- <a href=eraisedcomp.wav>JSML Audio</a>
+- </center>
+<hr></li>
+
+<li> <b>Fractions</b>:<br>
+<br>
+&lt;mfrac&gt; *1 *2 &lt;/mfrac&gt;<br>
+&lt;apply&gt;&lt;divide/&gt; *1 *2 &lt;/apply&gt;<br>
+<i>the fraction <br>
+numerator &lt;PROS PITCH="+10%" RATE="+30%"&gt; *1 &lt;/PROS&gt;<br>
+denomenator &lt;PROS PITCH="+10%" RATE="+30%"&gt; *2 &lt;/PROS&gt;</i><br>
+
+
+<br>
+Example:<br>
+<center><img src=riseoverrun.gif alt="gif image of math expression: alternate format links following"><br>
+- <a href="javascript:newWin('riseoverrun.mml',400,400)">MathML Code</a>
+- <a href="javascript:newWin('riseoverrun.tex',400,400)">TeX</a>
+- <a href=riseoverrun.wav>JSML Audio</a>
+- </center>
+<hr></li>
+
+<li> <b>Matrices</b>:<br>
+<br>
+&lt;matrix&gt;<br>
+&lt;matrixrow&gt; *11 ... *1n &lt;/matrixrow&gt;<br>
+...<br>
+&lt;matrixrow&gt; *m1 ... *mn &lt;/matrixrow&gt;<br>
+&lt;/matrix&gt;<br>
+<i> the matrix &lt;BREAK SIZE="medium"/&gt;<br>
+row &lt;PROS RATE="+20%" PITCH="+10%"&gt; *11 &lt;BREAK
+SIZE="medium"/&gt;  ...  &lt;PROS RATE="+20%" PITCH="+10%"&gt; *1n &lt;/PROS&gt; ... &lt;/PROS&gt;&lt;BREAK
+SIZE="medium"/&gt;<br>
+... <br>
+row &lt;PROS RATE="+20%" PITCH="+10%"&gt; *m1 &lt;BREAK
+SIZE="medium"/&gt;
+...
+&lt;PROS RATE="+20%"
+PITCH="+10%"&gt; *mn &lt;/PROS&gt; ... &lt;/PROS&gt;&lt;BREAK SIZE="medium"/&gt;</i><br>
+
+
+<br>
+Example:<br>
+<center><img src=matrix.gif alt="gif image of math expression: alternate format links following"><br>
+- <a href="javascript:newWin('matrix.mml',400,400)">MathML Code</a>
+- <a href="javascript:newWin('matrix.tex',400,400)">TeX</a>
+- <a href=matrix.wav>JSML Audio</a>
+- </center>
+<hr></li>
+
+<li> <b>Compound Expressions</b>:<br>
+<br>
+&lt;apply&gt; &lt;FOO/&gt; * &lt;/apply&gt;<br>
+<i>FOO of &lt;PROS PITCH="-10%" RATE="-30%"&gt; *&lt;/PROS&gt;<br></i>
+<br>
+&lt;mo&gt;(&lt;/mo&gt; * &lt;mo&gt;)&lt;/mo&gt;<br>
+<i>&lt;PROS PITCH="-10%" RATE="-30%"&gt; * &lt;/PROS&gt;</i><br>
+
+<br>
+Examples:<br>
+<center><img src=sinexp.gif alt="gif image of math expression: alternate format links following"><br>
+- <a href="javascript:newWin('sinexp.mml',400,400)">MathML Code</a>
+- <a href="javascript:newWin('sinexp.tex',400,400)">TeX</a>
+- <a href=sinexp.wav>JSML Audio</a>
+- </center>
+<center><img src=compoundexp.gif alt="gif image of math expression: alternate format links following"><br>
+- <a href="javascript:newWin('compoundexp.mml',400,400)">MathML Code</a>
+- <a href="javascript:newWin('compoundexp.tex',400,400)">TeX</a>
+- <a href=compoundexp.wav>JSML Audio</a>
+- </center>
+<hr></li>
+
+</ul>
+
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Contact Information</font></b>
+  <ul>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif"><a
+href="http://snow.utoronto.ca/~taras/">Taras Kowaliw</a> - Concept
+      Communication Architect, Adaptive Technology Resource Centre</font> </li>
+  </ul>
+  <!-- #EndEditable -->
+  <div align="center">  <hr>
+    <p><a href="http://www.utoronto.ca/atrc/"><font face="Verdana, Arial, Helvetica, sans-serif">The
+      Adaptive Technology Resource Centre</font></a></p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">J.P. Robarts
+      Library, First Floor, University of Toronto Information Commons <br>
+      130 St. George St. Toronto, Ontario, Canada M5S 3H1 <br>
+      Telephone: (416) 978-4360 Fax: (416) 971-2629 </font></p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"> For additional information
+      please e-mail <a href="http://www.utoronto.ca/atrc/reference/staff/harrison/harrison.html">Laurie
+      Harrison</a></font></p>
+    </div>
+</BLOCKQUOTE>
+</body>
+

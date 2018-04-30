@@ -1,0 +1,11 @@
+<math><mrow><mi>M</mi><mo>=</mo><mrow><mo>[</mo>
+<mtable>
+<mtr><mtd columnalign="center"><mrow><mn>1</mn></mrow></mtd>
+<mtd columnalign="center"><mrow><mi>x</mi>
+<mo>+</mo><mi>y</mi></mrow></mtd></mtr>
+<mtr><mtd columnalign="center"><mrow><mn>0</mn></mrow></mtd>
+<mtd columnalign="center"><mrow>
+<msup><mi>x</mi><mrow><mn>2</mn></mrow>
+</msup>
+</mrow></mtd></mtr></mtable>
+<mo>]</mo></mrow></mrow></math>

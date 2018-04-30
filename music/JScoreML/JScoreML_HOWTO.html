@@ -1,0 +1,64 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title> JScoreML </title>
+<meta name="Author" content="David Weinkauf">
+<meta name="Keywords" content="XML Music Score MusicML ScoreML JScoreML">
+<meta name="Description" content="Score editing / playing applet">
+</head>
+
+<body bgcolor="#CCCCCC">
+  <h1>
+  <center> What you need to run JScoreML </center> </h1>
+  
+  <hr />
+  <h2>
+  What you need:
+  </h2>
+  <ol>
+    <h3>
+    <li> Internet Explorer 5, Netscape 4.7, or Netscape 6 </li> <br />
+	<br />
+	<li> Java Plug-in 1.3 (1.3.0_01 for Netscape 6) </li>
+	<br> Get the <a href="http://java.sun.com/products/plugin/index.html"> Java Plug-in 1.3 </a> <br> 
+	<br>
+	<li> QuickTime for Java 4.1 </li>
+	<br /> Get <a href="http://developer.apple.com/quicktime/qtjava/index.html"> QuickTime for Java 4.1 </a> <br />
+	<br />
+	<li> JAXP 1.0.1 (Java API for XML Parsing) </li>
+	<br /> Get the <a href="http://java.sun.com/xml/?frontpage-spotlight"> JAXP 1.0 </a> <br />
+	<br />
+	<li> Fughetta and Marl musical fonts </li> <br /> 
+	Get <a href="http://www.efn.org/~bch/AboutFonts.html"> Fughetta </a> and <a href="http://www.music-theory.com/fonts.html"> Marl </a> <br />
+	</h3>
+	<h2> Screen Reader (Optional): 
+	<br /> If you wish to use a screen reader, you will need the following: </h2>
+	<h3> (the screen reader is not functional at present, see <a href="JScoreML_problems.html"> problems encountered with JScoreML </a>) 
+	<br /> <br />
+	<li> Alpha Works' Java Speech API (for the screen reader) </li>
+	<br> Get the <a href="http://www.alphaWorks.ibm.com/tech/speech"> Java Speech API </a> <br>
+	<br>
+	<li> IBM's ViaVoice Software package (for the screen reader) </li> <br>
+	<br>
+	</h3>
+  </ol>
+  <h4>
+  Now place QuickTime's <b> QTJava.zip </b> , JAXP's <b> jaxp.jar </b> and <b> parser.jar </b>, and the optional Alpha Works <b> ibmjs.jar </b> files in your jre/1.3/lib/ext directory or place all the JAR files on your CLASSPATH.  <br> <br>
+  </h4>
+  <h3>Installing the fonts:</h3>
+  <h4> (On Windows): Save the marl.ttf and fughetta.ttf files on your local file system. Then go to Start->Settings->Control Panel->Fonts then click on File -> Install New Font and point to the font files. <br> <br>
+  
+  <u>NOTE</u>: If you wish to save your score as a MIDI file on your local file system and/or use the screen reader functionality, pass the java run time parameter in your Java Plug-in (In Windows Start->Setting->Control Panel->Java Plug-in):</h4> 
+  <h3>-Djava.security.policy=http://nide.snow.idrc.ocadu.ca/music/JScoreML/JScoreMLPolicy </h3> <br>
+
+  <h3><u> SECURITY HAZARD NOTICE!</u></h3>
+  <h4> Make sure you delete this java run time parameter from your plug-in after you have finished using JScoreML. This policy file will have given applets unrestricted access to all your local files and folders!
+  </h4>
+  <br />
+  <h2>
+  Go and try <a href="JScoreML.html"> JScoreML </a> 
+  </h2>
+  <center> <a href="../index.html"> Back to main JScoreML </a> </center>
+  <br /> <br /> 
+</body>
+</html>

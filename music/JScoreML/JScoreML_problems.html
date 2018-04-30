@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Problems Encountered with JScoreML </TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#CCCCCC">
+
+  <center> <h1> Problems encountered in creating JScoreML </h1> </center>
+
+  <ol>
+  <li> <u>JScoreML is an applet</u> - meaning it is a running application deployed via the web onto your computer with the stipulation that it may never access any local files on the client computer. This posed a whole slew of problems in allowing JScoreML to save the score as a MIDI file on the client computer and in the implementation of the screen reader functionality. </li> <br />
+  <u> Solution</u>: The most ideal solution would be to make JScoreML a signed applet. This signature would verify that the applet did indeed come from the <a href="http://www.utoronto.ca/atrc"> Adaptive Technology Resource Centre at the University of Toronto </a> and query the user as to if they will allow this applet access to files on their local file system. This would allow the user to save the score as a MIDI file on to his/her local file system and (this is speculation) allow the screen reader functionality to work. The only drawback to this solution is that signing an applet requires attaining a digital signature from an RSA Certificate Authority (such as Verisign) which cost around $400 U.S. and are valid for one year. <br />
+  Another partial solution (and the one implemented) is for the user to pass a parameter into their Java Plug-in specifying a security policy giving all applets unrestricted access to the client's local file system. Then the user would download the JScoreML applet, interact with the application, and then delete the security policy parameter from their Java Plug-in so as to not allow any potentially dangerous applets unrestricted acces to their local file system. This solution allows the user to save the created score as a MIDI file on their local disk - but produces a NullPointerException when trying to initialize the local system's screen reader software. The screen reader functionality has been tested running JScoreML as a local application and does in fact work, but is unavailable in the current release of JScoreML due to this screen reader initialization error encountered. <br /> <br />
+  <li> <u>JScoreML requires additional Java API packages and musical fonts</u>. Because of the demanded functionality of a musical notation application and that this application is run via the web, many additional Java packages and two musical fonts and required to run JScoreML (see <a href="JScoreML_HOWTO.html"> what you need to run JScoreML </a>). This takes away from the expected simplicity of interacting with information on the web - one of the driving forces behind making this application an applet. </li> <br />
+  <u> Solution</u>: Java Web Start? - Java Web Start would launch a JScoreML application at a simple click of a link, but the problem of the additional API packages would only be solved if we would become a Java vendor and have all the required API packages installed in our version of Java. But this opens a huge licensing can of worms we would not want to get into. Also a Java Web Start application of this nature would require our JAR files to be signed with a signature obtained from an RSA Certificate Authority (see problem 1 above).
+  <br /> <br />
+  <li> <u>Only the JAXP 1.0.1 XML parsing API can be used</u> - Because JScoreML is an applet, it has added restrictions on what files can be accessed on the client's file system. Other XML parsing API's, such as the Apache Xerces parser, make a system call in the initialization of a DOM. This causes a security exception in the JScoreML applet and hence, no XML processing can be accomplished. The JAXP 1.0.1 XML parsing API does not make this system call and hence, allows JScoreML to initialize a DOM. More research into this topic will come. </li> <br />
+
+  <p> <a href="../index.html">Go back to main JScoreML</a> </p>
+
+</BODY>
+</HTML>

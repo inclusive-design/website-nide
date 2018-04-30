@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad//DTD HTML 3.2 + extensions for HoTMetaL PRO 3.0 19961211//EN"
+ "hmpro3.dtd">
+<HTML>
+<HEAD>
+<TITLE>Accessible UIML</TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<H1>Accessible UIML</H1>
+<H2>UIML and Word Predictor Demonstration</H2>
+<P>This site is for presenting our current thoughts on
+<A HREF="http://www.uiml.org/" TITLE="UIML.org">UIML</A>  and how it relates to
+accessibility.</P>
+<P>At the present, we are attempting to apply
+<A HREF="http://www.uiml.org/" TITLE="UIML.org">UIML</A> to a test case to get
+a handle on how UIML works, its benefits, and short comings.  The test case
+involves providing a UIML representation of a word predictor.  Here is a web
+page with a
+<A
+HREF="http://www.utoronto.ca/atrc/reference/staff/scheuhammer/WPDemo/index.html">word
+predictor applet</A>  that  shows how the word predictor works.</P>
+<H3>Word Predictor &quot;Logic&quot;.</H3>
+<P>The word predictor itself is best described as a library/database -- it has
+no user interface in and of itself.  Hence, it should be easy to describe the
+API to the word predictor library using the <CODE>LOGIC</CODE> element of UIML.
+  An attempt to do so can be found in <A HREF="WPLogic.ui">&quot;WPLogic.ui&quot;</A>.
+ Note that WPLogic.ui is an XML document, and your browser may attempt to parse
+and render it.  If so, and you really want to see the source instead (which you
+probably do), you could try looking at <A HREF="WPLogic.txt">&quot;WPLogic.txt&quot;</A>
+instead.  The latter document should load into your browser as uninterpretted
+plain text. -- the document shoudl contain a UIML mark-up.  If it still does not
+work, not, choose &quot;view source&quot; from within your browser.</P>
+<H3>Word Predictor User Interface</H3>
+<P>We have begun an attempt to cast the word predictor demonstration's user
+interface as a UIML document.  Our current attempt can be found in
+<A HREF="WPDemo.ui">&quot;WPDemo.ui&quot;</A> (or, <A HREF="WPDemo.txt">&quot;WPDemo.txt&quot;</A>).
+ This is not a final version of this document.  It would be best described as &quot;development
+version 1.00&quot;.</P>
+<P>There are a number of comments embedded in the document.  The purpose of
+these comments is to explain what the UIML means vis-a-vis the applet demo, and,
+more importantly, question whether the mark-up is correct.  For complete
+information, read the comments; however, here is a summary of the issues we have
+encountered:</P>
+<OL>
+<LI><A HREF="#logic">Library logic versus applet logic.</A></LI>
+<LI><A HREF="#events">Abstract events.</A></LI></OL>
+<H4><A NAME="logic">Library Logic vs. Applet Logic</A></H4>
+<P>As stated above, the word predictor is a library whose API can be exposed
+using <CODE>LOGIC</CODE> elements.  However, the demonstration applet has, in
+and of itself, its own internal logic.  For example, it maintains a record of
+the &quot;current word&quot; which is the string of characters the user is
+typing.  The user can delete characters, add characters, or finally choose a
+prediction or add a word termination character (whitespace or punctuation).  The
+choosing of a prediction or typing a word termination character causes the
+applet to stop tracking the current word, and reset it to the empty string.</P>
+<P>There are other state changes that the applet code maintains.  These are not
+part of the user interface per se -- they are not text areas, or scrollable
+lists, etc. -- but they are neither intrinsic to the word predictor logic as
+defined in &quot;WPLogic.ui&quot;.  Rather, they are part of the applet logic. 
+This leads to two questions:</P>
+<OL>
+<LI>Should the applet logic be merged with the word predictor logic?  Or,</LI>
+<LI>Is this solved by multiple logics, using, for example, multiple <CODE>OBJECT</CODE>
+elements?</LI></OL>
+<H4><A NAME="events">Abstract Events</A></H4>
+<P>The reader will note a degree of confusion with respect to the event
+handling in the <CODE>ACTION-LIST</CODE> section.  What is attempted there is
+to declare all the relevant key stroke events and distinguish simple typing from
+prediction choice.  It makes for a fairly long and involved document.  One way
+to potentially get around this is to define the events in a more abstract way
+and have the abstract events mapped to the actual events either in the <CODE>LOGIC</CODE>
+or in the <CODE>TOOLKIT-PEERS</CODE> section.  Thus, the  <CODE>ACTION-LIST</CODE>
+may simply define a &quot;current-word-changed&quot; event and a &quot;prediction-selected&quot;
+event without saying exactly what the user did to cause those events.</P>
+<HR>
+<P>Updated: 1999 Oct 18 JS</P></BODY></HTML>

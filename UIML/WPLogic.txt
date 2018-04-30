@@ -1,0 +1,112 @@
+<?xml version="1.0"?> 
+<!DOCTYPE uiml PUBLIC "-//Universal Interface Technologies//UIML 2.0//EN" "http://uiml.org/dtd/UIML20.dtd">
+
+<UIML>
+<HEAD>
+    Copyright © 1999, ATRC, University of Toronto.  All rights reserved.
+    
+    File:			WPLogic.ui
+    Description:	Logic section of UIML document for WordPredictor.  Note that these are not necessarily
+                    all of the functions in the WordPredictor; these are the ones that the demo applet
+                    makes use of.
+                    
+    Date            Initials        Version            Comment
+    ----            --------        -------            -------
+    99 Sep 13       JS              1.00	           New.
+    99 Oct 05       JS              1.01	           Added some functions of the applet OBJECT.
+</HEAD>
+
+<LOGIC>
+    <!-- The word predictor library API. -->
+
+    <OBJECT NAME="Word Predictor" TYPE="application/java" MAPS-TO="atrcuoft.WP.WPDict.class">
+        <!--
+            Main function that generates predictions.
+            Name:       getWords
+            Param:      typedSoFar        String of characters that the user has typed thus far.
+            Returns:    predictionArray   Array of predictions (strings)
+        -->
+        <FUNCTION NAME="getWords" MAPS-TO="getWords">
+            <PARAM NAME="typedSoFar"/>
+            <RETURNS NAME="predictionArray"/>
+        </FUNCTION>
+
+        <!--
+            Function for setting the dictionary order (e.g., alphabetic, by frequency).
+            Name:        setDictOrder
+            Param:       dictOrder        A static public constant of the WPDict class (an int).
+        -->
+        <FUNCTION NAME="setDictOrder" MAPS-TO="setDictOrder">
+            <PARAM NAME="dictOrder"/>
+        </FUNCTION>
+
+        <!--
+            Function for setting the number of predictions returned.
+            Name:        setReturnSize
+            Param:       returnSize      Number of predictions sought (int).
+        -->
+        <FUNCTION NAME="setReturnSize" MAPS-TO="setRetSize">
+            <PARAM NAME="returnSize"/>
+        </FUNCTION>
+
+        <!--
+            Function for deteriming if the predictor is initialized.
+            Name:        isValid
+            Returns:     dictIsValid     True or false (boolean).
+        -->
+        <FUNCTION NAME="isValid" MAPS-TO="isValid">
+            <RETURNS NAME="dictIsValid"/>
+        </FUNCTION>
+
+        <!--
+            Function for adding a word to the dictionary.  This version assumes an initial frequency
+            of one.
+            Name:        addWord1
+            Param:       wordToAdd       The word to add to the dictionary (string).
+            Returns:     wordInfo        An instance of atrcuoft.WP.WordInfo.
+        -->
+        <FUNCTION NAME="addWord1" MAPS-TO="addWord">
+            <PARAM NAME="wordToAdd"/>
+            <RETURNS NAME="wordInfo"/>
+        </FUNCTION>
+
+        <!--
+            Function for adding a word to the dictionary.  This version is passed the initial frequency.
+.           Name:        addWord1
+            Param:       wordToAdd        The word to add to the dictionary (string).
+            Param:       wordFrequency    The word's frequency value (float).
+            Returns:     wordInfo         An instance of atrcuoft.WP.WordInfo.
+        -->
+        <FUNCTION NAME="addWord2" MAPS-TO="addWord">
+            <PARAM NAME="wordToAdd"/>
+            <PARAM NAME="wordFrequency"/>
+            <RETURNS NAME="wordInfo"/>
+        </FUNCTION>
+
+    </OBJECT>
+
+    <!-- The word predictor applet "utility" methods. -->
+    <OBJECT NAME="WPDemo" TYPE="application/java" MAPS-TO="atrcuoft.WP.WPDemo.class">
+        <!--
+            Replace the current word with the prediction at the given index.
+            Name:        replaceWord
+            Param:       index            Index of the prediction word.
+            Returns:     nothing.
+        -->
+        <FUNCTION NAME="replaceWord" MAPS-TO="replaceWord">
+            <PARAM NAME="index"/>
+        <FUNCTION>
+        
+        <!--
+            User typed a character -- update the prediction list, and/or add a new word to the lexicon.
+            Name:        handleKeyTyped
+            Param:       theCharacterTyped The character typed by the user.
+            Returns:     nothing.
+        -->
+        <FUNCTION NAME="handleKeyTyped" MAPS-TO="replaceWord">
+            <PARAM NAME="theCharacterTyped"/>
+        <FUNCTION>
+        
+    </OBJECT>
+</LOGIC>
+</UIML>

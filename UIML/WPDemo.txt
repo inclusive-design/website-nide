@@ -1,0 +1,295 @@
+<?xml version="1.0"?> 
+<!DOCTYPE uiml PUBLIC "-//Universal Interface Technologies//UIML 2.0//EN" "http://uiml.org/dtd/UIML20.dtd">
+<UIML>
+<HEAD>
+    Copyright © 1999, ATRC, University of Toronto.  All rights reserved.
+    
+    File:            WPDemo.ui
+    Description:     User interface for the Word Predictor demo.
+                    
+    Date            Initials        Version     Comment
+    ----            --------        -------     -------
+    99 Sep 22       JS              1.00        New.
+</HEAD>
+
+    <!--
+        The toolkit peers.  The URL is bogus(?) and taken straight from the version 2.0 spec.  It's here
+        as a place holder.
+    -->
+    <TOOLKIT-PEERS>
+        <TOOLKIT NAME="java" SOURCE="http://uiml.org/toolkits/Java20AWT.ui"/>
+    </TOOLKIT-PEERS>
+
+    <INTERFACE>
+        <!--
+            The GUI structure.
+        -->
+        <STRUCTURE NAME="gui">
+            <!--
+                These PART's are fairly AWT/Applet specific.  I'm just mimicing the structure of
+                the demo applet.
+            -->
+            <PART NAME="mainPanel" CLASS="Applet">
+                <PART NAME="userInput" CLASS="TextArea"/>        <!-- Text input at the top -->
+                <PART NAME="predPanel" CLASS="Panel">            <!-- Panel containing... -->
+                    <PART NAME="predictions" CLASS="List"/>      <!-- ...list of predictions, and... -->
+                    <PART NAME="status" CLASS="TextField"/>      <!-- ...a status line -->
+                </PART>
+            </PART>
+        </STRUCTURE>
+        
+        <!--
+            The AWT style.  Again, the SOURCE is bogus and taken verbatim from the spec document.
+        -->
+        <STYLE NAME="AWT-Applet" SOURCE="http://uiml.org/ui/JavaAWTRenderings.ui#AWT" MODE="merge-children">
+            
+            <!--
+                *** Rendering properties ***
+                
+                The main panel uses a java.awt.BorderLayout.  The user input (TextArea) occupies the centre of
+                this layout. 
+            -->
+            <PROPERTY PART="mainPanel" PNAME="layout">borderLayout</PROPERTY>
+            <PROPERTY PART="userInput" PNAME="alignment">center</PROPERTY>      <!--  BorderLayout.CENTER -->
+            
+            <!--
+                The prediction panel also uses a java.awt.BorderLayout.  Its sub-parts, the prediction list
+                and status line, occupy the centre and south of that layout, respectively.
+            -->
+            <PROPERTY PART="predPanel" PNAME="layout">borderLayout</PROPERTY>
+            <PROPERTY PART="predictions" PNAME="alignment">center</PROPERTY>    <!--  BorderLayout.CENTER -->
+            <PROPERTY PART="status" PNAME="alignment">south</PROPERTY>          <!--  BorderLayout.SOUTH -->
+
+            <!--
+                The prediction panel is placed at the south of the main panel.
+            -->
+            <PROPERTY PART="predPanel" PNAME="alignment">south</PROPERTY>       <!--  BorderLayout.SOUTH -->
+
+            <!--
+                The size of the whole thing is 500 wide by 330 high.  This is usually given by the
+                APPLET element within the HTML document.
+            -->
+            <PROPERTY PART="mainPanel" PNAME="size">500, 330</PROPERTY>
+
+            <!--
+                Make sure the text area allows user input, and the status line does not.
+                ***Note:  at startup, the 'userInput' part should have keyboard focus.  How do you
+                ***specify that?         
+            -->
+            <PROPERTY PART="userInput" PNAME="editable">true</PROPERTY>
+            <PROPERTY PART="status" PNAME="editable">false</PROPERTY>
+
+            <!--
+                For word prediction to be of any use, the applet must track various aspects of the
+                user's typing, notably (1) when the user has started typing a new word, (2) what that
+                word is so far, and (3) whether any characters were deleted (backspace).  The first two
+                are needed because predictions are generated for the current word, not the entire contents
+                of the text input area.  The latter changes the predictions.  Note that this amounts to
+                recording the state of the input, not states of the word predictor itself.
+                
+                Note:  if the ACTION element ends up as CALL'ing into the LOGIC, then these may not be
+                necessary; they will be data used by the functions defined in the LOGIC section. 
+            -->
+            <PROPERTY PART="mainPanel" PNAME="wordStart">true</PROPERTY>        <!-- initial value -->
+            <PROPERTY PART="mainPanel" PNAME="backspace">false</PROPERTY>       <!-- initial value -->
+            <PROPERTY PART="mainPanel" PNAME="currentWord">""</PROPERTY>        <!-- initial value:  empty string? -->
+            
+            <!--
+                Properties of the 'userInput' part to use in event processing.  This is to record the user's
+                individual key strokes.  (But how to accumulate them?).
+            -->
+            <PROPERTY PART="userInput" PNAME="functionKey">""</PROPERTY>        <!-- initial value:  empty string? -->
+            <PROPERTY PART="userInput" PNAME="alphaNumeric">""</PROPERTY>       <!-- initial value:  empty string? -->
+            
+            <!-- ***Event properties ***
+                This is an attempt, following page 28, at defining event properties such that they link to EVENT
+                elements defined in the ACTION-LIST section.
+            	
+                The first is the double click event on the list of 'predictions' (part).
+            -->
+            <PROPERTY PART="predictions" PNAME="doubleClick" CLASS="LSelected">ItemSelected</PROPERTY>
+            
+            <!--
+                The next three are key press, key release, and key typed.
+            -->
+            <PROPERTY PART="userInput" PNAME="keyPress" CLASS="keyPress">keyPress</PROPERTY>
+            <PROPERTY PART="userInput" PNAME="keyRelease" CLASS="keyRelease">keyRelease</PROPERTY>
+            <PROPERTY PART="userInput" PNAME="keyTyped" CLASS="keyTyped">keyTyped</PROPERTY>
+
+        </STYLE>
+        
+        <!--
+            Action lists.  As the user types into 'userInput', the word predictor is consulted for six
+            predictions.  These are displayed in 'predictions', which is constantly updated as each key
+            is typed.  User can select a prediction by pressing F1...F6, or by double clicking on a
+            prediction.  However the prediction is selected, it is added to the 'userInput' and then the
+            list is emptied.  If no prediction is selected, and the user types white space or punctuation,
+            then the list is also emptied.  For a word entered in 'userInput', if it is not in the
+            word predictor's lexicon, it is added.  This is shown in the 'status' line by displaying
+            the added word.
+        -->
+        <ACTION-LIST NAME="AWT-Applet">
+            <!--
+                Key strokes:
+                    - on key press, check for F1...F6 or backspace.  The former cause a selection of a
+                      prediction.  The latter changes the state of the current word and causes a
+                      re-generation of the prediction list.  An aspect of that state is "wordStart";
+                    - on key release, do nothing;
+                    - on key typed, check for alphabetic, numeric, or "other" (punctuation and white space). 
+            -->
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <!--
+                            Documentation (page 39) says CLASS, PNAME, and NAME attributes are mandatory,
+                            and all others are illegal when EVENT element is child of EQUAL (as it is here).
+                            But, the example at the top of page 36 doesn't follow the edict.  Also, I want
+                            to associate this event with the 'userInput' part...
+                            It's unclear to me what the NAME attribute should be.  The first attempt used
+                            "F1" or "F2", etc.; then I switched to "keyCode".  I've left it "????" for now.
+                         -->
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>F1</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                <!--
+                    Get the first prediction from 'predictions' and replace the current word in
+                    'userInput' with it. Then empty the 'predictions', reset property 'wordStart'
+                    to true, and property 'currentWord' to the empty string.  Maybe this should be
+                    a routine in the logic?  But, it's not a routine in the Word Predictor logic,
+                    but a routine in the Applet's logic.  Something like the following, where the
+                    index PROPERTY/PARAM is 1-6 depending on which F key was pressed:
+                        <CALL FUNCTION="replaceWord">
+                            <PARAM NAME="index">
+                                <PROPERTY PNAME="index">1</PROPERTY>
+                            </PARAM>
+                        </CALL>
+                -->
+                </ACTION>
+            </RULE>
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>F2</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                    <!-- implement here -->
+                </ACTION>
+            </RULE>
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>F3</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                    <!-- implement here -->
+                </ACTION>
+            </RULE>
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>F4</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                    <!-- implement here -->
+                </ACTION>
+            </RULE>
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>F5</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                    <!-- implement here -->
+                </ACTION>
+            </RULE>
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>F6</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                    <!-- implement here -->
+                </ACTION>
+            </RULE>
+            <RULE>
+                <CONDITION>
+                    <EQUAL>
+                        <EVENT CLASS="keyPress" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                        <CONSTANT>backSpace</CONSTANT>
+                    </EQUAL>
+                </CONDITION>
+                <ACTION>
+                    <!--
+                        If it's a backspace, set 'backSpace' to true, delete the last character
+                        from 'currentWord' and reset the contents of 'predictions'.  Also, if
+                        'currentWord' is now empty, set 'wordStart' back to true.
+                     -->
+                </ACTION>
+            </RULE>
+            <!--
+                - on key release, do nothing.
+            -->
+            <RULE>
+                <CONDITION>
+                    <EVENT CLASS="keyRelease" PNAME="KeyCode" NAME="????" PART="userInput"/>
+                </CONDITION>
+                <ACTION>
+                    <!-- Ignore all key release events -->
+                </ACTION>
+            </RULE>
+            <!--
+                - on key typed, check for alphabetic, numeric, or "other" (punctuation and white space).
+            -->
+            <RULE>
+                <CONDITION>
+                    <EVENT CLASS="keyTyped" PNAME="charTyped" NAME="????" PART="userInput"/>
+                </CONDITION>
+                <ACTION>
+                    <!--
+                        If 'backSpace' is true, reset it to false.
+                        If the character typed is a character:
+                            if 'wordStart' is true, record the caret position in 'userInput' and set
+                            'wordStart' to false.
+                            Append the character typed to 'currentWord'.
+                            Call upon the word predictor to generate predictions, and set the 'predictions'
+                            list to what it returns.
+                        If the character typed is a digit:
+                            do nothing.
+                        If the character typed is a punctuation or whitespace:
+                            If 'currentWord' >= 3 letters (word predictor disallows words shorter than three letters):
+                                place 'currentWord' in the status line (to indicate that it is being added to the lexicon).
+                                Call upon the word predictor to add the 'currentWord' to the lexicon.
+                            Reset the 'currentWord' to the empty string.
+                            Reset the 'predictions' list (part) to empty.
+                            Set 'wordStart' to true.
+                        
+                        Perhaps this way:
+                        <CALL FUNCTION="handleKeyTyped">
+                            <PARAM NAME="theCharacterTyped">
+                                <PROPERTY PNAME="charTyped" PART="userInput" OPERATION="get"/>
+                            </PARAM>
+                        </CALL>
+                    -->
+                </ACTION>
+
+       </ACTION-LIST>            
+    </INTERFACE>
+    
+    <!--
+        Word predictor logic.  I don't think this is syntactically correct, but why not allow this?
+    -->
+    <LOGIC SOURCE="WPLogic.ui"/>
+    
+</UIML>

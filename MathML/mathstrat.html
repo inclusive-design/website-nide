@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>ATRC MathML Stylesheet Strategy</title>
+</head>
+<style type=text/css><!--
+BODY { margin: 20px; font-family: arial;  }
+H2 { font-family: arial; color: 009900; }
+H1 { font-family: arial; color: 009900; }
+P { margin-left: 20px; margin-right: 20px; }
+A { font-family: arial; color: 009900; }
+A:hover { font-family: arial; color: ffffff; background-color: 009900; }
+--></style>
+<body>
+<h2>ATRC MathML Stylesheet Strategy</h2>
+
+<p>The ATRC is currently involved in the creation of a set of
+stylesheets to transform MathML into a formatted speech mark-up. 
+This project is being executed in technical collaboration
+with IBM's T. J. Watson Research Centre.</p>
+
+<p>The stylesheets will be authored in XSL (eXtensible Stylesheet Language),
+a specification from the <a href="http://www.w3.org">W3C</a> designed for
+the tranlation from one XML language into another. XSL is a universal technology,
+quickly becoming supported on all platforms, and in both major browsers.</p>
+
+<p>These XSL stylesheets will be used (initially, at least) to convert the MathML
+code into the Java Speech Mark-up Language. JSML was chosen because it is 
+a fairly well supported cross-platform language. Converting the stylesheets
+to output some other speech format (For example: SSML or CSS2 formatted XHTML)
+should be trivial.</p>
+
+<p>The ATRC will author broad and encompassing stylesheets, sufficient to render
+all available mathematical notations in some manner - these stylesheets will make no assumptions
+whatsoever about the context or meaning of the supplied MathML, and hence will do little
+better than a linear listing of all elements.</p>
+
+<p>More in-depth processing may be added through the creation of additional stylesheets, 
+overiding the transformation rules specified in the first. These rules may be created by
+anyone, including the user, and linked to the system, hence allowing for a user-controlled
+context selection. If the user knows she is within the context of a particular field, then she
+may load an appropriarte stylesheet for that domain. Or, if the user has some preference
+for how a particular expression or class of expressions is to be read, she may load her own
+user defined stylesheet for her purposes.</p>
+
+<p>The following two examples of readings of the normalized Gaussian illustrate this idea: The <a href="gauss.wav">first</a>
+assumes no context and applies no special rules: it uses only the inforation
+supplied by the MathML tags. The <a href="gauss2.wav">second</a> is the precise same MathML source, but 
+has been processed with three additional rules:
+<ul>
+  <li> <b> <i>[exp]</i> / 2 </b> -----------> <b>one-half <i>[exp]</i> </b></li>
+  <li><b><i>[exp]</i>  raised 2</b> -------------> <b><i>[exp]</i>  squared</b></li>
+  <li><b><i>[nothing]</i> - <i>[exp]</i> </b> -------------> <b>negative <i>[exp]</i> </b></li>
+</ul>
+
+
+<p>The created stylesheets will be added to a public repository - there, they will be freely available
+for download and modification by individual users. Additionally, users will be able to upload their own
+files into the repository, hence sharing any stylesheets created by themselves with the larger community of users.
+</p>
+
+<p>These stylesheets will also be made available (somehow) for use with other commercial products
+<p align="right"><i>This document created: 20.03.01<br />
+<a href="mailto:taras.kowaliw@utoronto.ca">Taras Kowaliw</a>, ATRC, University of Toronto</i></p>
+</body>
+</html>

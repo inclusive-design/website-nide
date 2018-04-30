@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Requirements and Setup</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr width="50%">
+
+<h1 align="center">ATRC Self Voicing Chat</h1>
+
+<hr width="50%">
+
+<h2 align="center">Requirements and Setup</h2>
+
+<p>To use the ATRC Self Voicing Chat, you need the following:</p>
+
+<ul>
+    <li><a href="#browser">Microsoft's Internet Explorer or
+        Netscape's Navigator</a></li>
+    <li><a href="#plugin">Sun's Java 1.1.X Plug-in</a></li>
+    <li><a href="#svk">The IBM Self Voicing Kit (SVK)</a></li>
+    <li><a href="#perk">ChatPerk.jar</a></li>
+    <li><a href="#setup">Configure your system</a></li>
+</ul>
+
+<h3><a name="browser"></a>Netscape's Navigator or Microsoft's
+Internet Explorer</h3>
+
+<p>The Chat is an applet that will run in a browser window. To
+use it, you must have a browser capable of running Java applets.</p>
+
+<p><a href="#req">return to top</a></p>
+
+<h3><a name="plugin"></a>Sun's Java 1.1.X Plug-in</h3>
+
+<p>The IBM Self Voicing Kit requires Sun's Java Plug-in. You can
+obtain this from <a
+href="http://java.sun.com/products/plugin/1.1.2/index-1.1.2.html">Sun's
+Java Plug-in page</a>. Install the plug-in as instructed.</p>
+
+<p><!--webbot bot="HTMLMarkup" startspan --><em><!--webbot
+bot="HTMLMarkup" endspan --><font color="#800040">Note<!--webbot
+bot="HTMLMarkup" startspan --></em><!--webbot bot="HTMLMarkup"
+endspan --></font>: The current version of the IBM Self Voicing
+Kit will not work with the most recent version of the Java
+Plug-in, due to a bug in the plug-in. Be sure that you obtain
+version 1.1.2 of the plug-in, not version 1.2.2.</p>
+
+<p><a href="#req">return to top</a></p>
+
+<h3><a name="svk"></a>The IBM Self Voicing Kit (SVK)</h3>
+
+<p>The kit can be downloaded from the <a
+href="http://www.alphaWorks.ibm.com/formula/selfvoicingkit">Self
+Voicing Kit</a> site. Install the SVK as instructed.</p>
+
+<p><!--webbot bot="HTMLMarkup" startspan --><em><!--webbot
+bot="HTMLMarkup" endspan --><font color="#800040">Note<!--webbot
+bot="HTMLMarkup" startspan --></em><!--webbot bot="HTMLMarkup"
+endspan --></font>: The SVK is experimental software that has not
+been fully tested, and is made available by IBM for evaluation
+purposes only. For more information, see the License Agreement
+provided with the SVK.</p>
+
+<p><!--webbot bot="HTMLMarkup" startspan --><em><!--webbot
+bot="HTMLMarkup" endspan --><font color="#800040">Note<!--webbot
+bot="HTMLMarkup" startspan --></em><!--webbot bot="HTMLMarkup"
+endspan --></font>: Due to a bug in the plug-in, you must use the
+SVK for JDK 1.1.x. </p>
+
+<p><a href="#req">return to top</a></p>
+
+<h3><a name="perk"></a>ChatPerk.jar</h3>
+
+<p>This is the Java archive that specifies how the Self Voicing
+Kit will voice the Chat. It must be downloaded and placed in your
+CLASSPATH. In some installations, the file must be place in the
+same directory as the <code>svk.jar</code> file.</p>
+
+<blockquote>
+    <p><a href="ChatPerk.zip">Download the file ChatPerk.zip</a>
+    which contains ChatPerk.jar</p>
+</blockquote>
+
+<p><a href="#req">return to top</a></p>
+
+<h3><a name="setup"></a>Configure your system</h3>
+
+<p>Once all the <a href="#req">necessary components</a> have been
+installed on you system, you need only configure the SVK by
+editing the file <code>ibmsvkconfig.properties</code>, located in
+the <code>lib</code> directory off of your Java home directory.</p>
+
+<p>Add the following line to the file:</p>
+
+<blockquote>
+    <p><code>Chat=atrcuoft.chat.ChatPerk</code></p>
+</blockquote>
+
+<p><a href="#req">return to top</a></p>
+
+<p align="center"><font size="2">[</font><a href="index.html"><font
+size="2">Home</font></a><font size="2">] [Requirements and Setup]
+[</font><a href="howto.html"><font size="2">How to use the chat</font></a><font
+size="2">] [</font><a href="trychat.html"><font size="2">Try the
+Chat</font></a><font size="2">] [</font><a href="devinfo.html"><font
+size="2">Technical Information</font></a><font size="2">]</font></p>
+
+<hr>
+
+<p><font size="2">Page modified: July 27, 1999</font></p>
+</body>
+</html>

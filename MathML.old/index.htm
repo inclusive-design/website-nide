@@ -1,0 +1,148 @@
+<html><!-- #BeginTemplate "/Templates/nideMathML.dwt" -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>NIDE: Math ML</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+td {  font-family: Arial, Helvetica, sans-serif; color: #000000; text-decoration: none}
+a {  font-family: Arial, Helvetica, sans-serif; color: #000066; text-decoration: none}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF">
+<h3 align="center"><img src="../NideHead.gif" width="559" height="120" alt="NIDE Logo"></h3>
+<h3 align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Network 
+  For Inclusive Distance Education</font></h3>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr> 
+    <td width="18%" height="21" bgcolor="#FFCC99" align="center"> 
+      <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="../index.html">Home</a></b> 
+        </font></p>
+    </td>
+    <td width="82%" height="21" bordercolor="#FFFFFF" bgcolor="#FFCC99" align="center"> 
+      <p><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="../SyncComm/index.htm">Accessible 
+        Synchronous Communication Tools</a></b></font><font face="Verdana, Arial, Helvetica, sans-serif"></font></p>
+    </td>
+  </tr>
+</table>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr> 
+    <td height="21" bgcolor="#FFCC99" align="center" width="366"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="../Pendulum/index.html">Physics 
+      Lab Haptic Pendulum Project</a></b></font></td>
+    <td height="21" bgcolor="#FFCC99" align="center" width="116"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="http://aprompt.snow.utoronto.ca/">A-Prompt</a></b></font> 
+    </td>
+    <td height="21" bgcolor="#FFCC99" align="center" width="151"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="../music/index.html">Music 
+      Notation</a></b></font></td>
+  </tr>
+</table>
+<table width="640" border="0" align="center" bgcolor="#FFFFFF" bordercolor="#FFFFFF" cellpadding="0" cellspacing="1">
+  <tr> 
+    <td bgcolor="#FFCC99" width="416" height="21" align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="../accessITL.htm">Accessible 
+      Interactive Learning Tools</a></b></font></td>
+    <td width="219" bgcolor="#6699FF" height="21" align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><a href="index.htm">MathML 
+      Project</a></b></font></td>
+  </tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+    <td align="left"><a href="../index.html">Home</a>: <a href="index.htm">MathML 
+      Project</a><!-- #BeginEditable "bread%20crumb" --> <!-- #EndEditable --></td>
+  </tr>
+</table>
+<BLOCKQUOTE><!-- #BeginEditable "content" -->
+  <h3 align="center"><font face="Verdana, Arial, Helvetica, sans-serif">MathML
+    Accessibility Project</font></h3>
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Introduction</font></b>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif">Displaying mathematics
+    on the web is a notoriously difficult problem; The existing solutions, notably
+    the use of GIF images for the presentation of mathematical notation, prove
+    problematic in general, and particularly so for viewers with disabilities.
+    The recent W3C proposal for an XML mathematics language, <a href=http://www.w3.org/Math/>MathML</a>,
+    promises to very quickly become the Internet standard for mathematical documents.
+    </font></p>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif">This component of the
+    NIDE project proposes to approach MathML at this early stage, when standards
+    and conventions for implementation are being developed. Considering both issues
+    of authoring and presentation, the goals of the MathML project are to find
+    or create methodologies for alternative display of MathML content (Nemeth
+    Braille Code/ Text alternatives suitable for speech), and methods of notation
+    generation accessible to those with visual disabilities. The hope is that
+    these tools may be included in MathML authoring tools and user agents as they
+    become available. </font></p>
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Current Direction</font></b>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif">The
+  <a href=http://www.mozilla.org>Mozilla Project</a> is an exciting one from the perspective
+  of accessibility. The ability to alter one's user interface, the proposed support of CSS2 and
+  the proposed packaged speech synthesizer make it a clear choice of web browser for visually disabled
+  users. The NIDE MathML Project's current investigations are concerned with feasibility of
+  including alternate modes for presentation within the Mozilla framework. The hope is to include
+  either preprocessing or a tree-to-tree transform, recasting the MathML as HTML with CSS2 audio
+  formatting, or as Nemeth Braille code in accordance with user preference settings.
+  </font></p>
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Related Work</font></b>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif"> The following
+  people or organizations are involved in work similar to the goals of this prject:
+  <ul><b>Presentation:</b>
+  <li> <a href=http://cs.cornell.edu/home/raman/>ASTER & EmacsSpeak</a>
+  - This work, undertaken by T.V. Raman is a tremendous success in the presentation
+  of mathematics for the visualy disabled. The NIDE MathML project hopes
+  to emulate his rules for user defined context, and
+  for communication of nonlinear notation using audio formatting.</li>
+  <li> <a href=http://www.nmsu.edu/~mavis/converter.html>Scientific Notebook to Nemeth Code Converter</a>
+  - This software, developed by <a href=http://www.nmsu.edu/~mavis/
+  >MAVIS</a>, converts TeX mathematical or scientific documents to Nemeth Braille code.
+  Future MathML support is being developed.</li>
+  <br><b>Authoring:</b>
+  <li> <a href=http://www.w3.org/People/Raggett/EzMath/>EzMath</a>
+  - EzMath, undertaken by the W3C's Dave Raggett, is an authoring tool
+  and plugin, in the developmental stage. Future plans include extention
+  to MathML</li>
+
+  </ul>
+  </font><p></p>
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Related Links</font></b>
+  <p><font face="Verdana, Arial, Helvetica, sans-serif"> The following are links
+  to descriptions and specifications for technologies mentioned above.
+  <ul>
+  <li> <a href=http://www.w3.org/Math/>MathML Specifications</a>
+  - The W3C's specifications for the MathML language.</li>
+  <li> <a href=http://www.mozilla.org>Mozilla Project</a>
+  - Information and resources for the Mozilla Project.</li>
+  <li> <a href=http://www.w3.org/TR/xslt/>XSLT Specifications</a>
+  - The W3C's specifications for XSLT. This is targeted as the method of
+  transforming MathML into alternative formats.</li>
+  <li> <a href=http://www.w3.org/WAI/>WAI Accessibility</a>
+  - The W3C's accessibility recommendations for HTML code.</li>
+
+  </ul>
+  </font><p></p>
+
+
+  <b><font face="Verdana, Arial, Helvetica, sans-serif">Contact Information</font></b>
+  <ul>
+    <li><font face="Verdana, Arial, Helvetica, sans-serif"><a
+href="http://snow.utoronto.ca/~taras/staffpage.html">Taras Kowaliw</a> - Concept
+      Communication Architect, Adaptive Technology Resource Centre</font> </li>
+  </ul>
+  <!-- #EndEditable -->
+  <div align="center">  <hr>
+    <p><a href="http://www.utoronto.ca/atrc/"><font face="Verdana, Arial, Helvetica, sans-serif">The 
+      Adaptive Technology Resource Centre</font></a></p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">J.P. Robarts 
+      Library, First Floor, University of Toronto Information Commons <br>
+      130 St. George St. Toronto, Ontario, Canada M5S 3H1 <br>
+      Telephone: (416) 978-4360 Fax: (416) 971-2629 </font></p>
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"> For additional information 
+      please e-mail <a href="http://www.utoronto.ca/atrc/reference/staff/harrison/harrison.html">Laurie 
+      Harrison</a></font></p>
+    </div>
+</BLOCKQUOTE>
+</body>
+<!-- #EndTemplate --></html>

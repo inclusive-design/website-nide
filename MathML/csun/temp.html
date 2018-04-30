@@ -1,0 +1,292 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+  <title>ACCESSIBLE MATHEMATICS ON THE WEB</title>
+</head>
+<style type=text/css><!--
+BODY { margin: 20px; font-family: arial; font-size: 10pt; }
+H2 { font-family: arial; color: 009900; }
+H1 { font-family: arial; color: 009900; }
+P { margin-left: 20px; margin-right: 20px; }
+A { font-family: arial; font-size: 10pt; color: 009900; }
+A:hover { font-family: arial; font-size: 10pt; color: 009900; font-weight: bold;}
+--></style>
+<body>
+
+<center>
+<h1>ACCESSIBLE MATHEMATICS ON THE WEB:</h1>
+<h2>TOWARDS AN AUDIO REPRESENTATION OF MATHML</h2>
+</center>
+<i>Presented by:<br>
+Taras Kowaliw, Adaptive Technology Resource Centre, University of Toronto<br>
+<a href=mailto:taras.kowaliw@utoronto.ca>taras.kowaliw@utoronto.ca</a><br>
+16.10.00<br></i>
+
+<center><h1>Draft of Modifications, 10.01.01</h1></center>
+
+<h2>Abstract...</h2>
+<p> This paper begins with a summary of the challenges
+associated with the communication of mathematics in an auditory
+modality. Solutions to these challenges are presented,
+forming a functional specification of a usable tool for the
+visually disabled. The paper then describes the work being undertaken
+by the Adaptive Technology Resource Centre (ATRC), in collaboration
+with IBM Research(*), in extending their Techexplorer Hypermedia
+Browser to incorporate these features.
+The result promises to be a robust application for
+the presentation of mathematical web pages (XHTML and MathML documents),
+supporting the features needed for effective communication
+within the Screen Reading paradigm.</p>
+
+<hr>
+
+<p> Mathematicians rarely <i>just</i> talk about their work; More
+commonly they are found poised and ready around a blackboard, or
+hovering about the closest outcropping bemoaning the poor
+quality of cocktail napkins. Mathematics is a primarily visual
+endeavor; The addition of natural language is an afterthought,
+and mostly an incomplete afterthought. Indeed, this is a
+difficult matter for accessibility - How can one effectively
+communicate a primarily visual matter to the visually disabled?</p>
+
+<h2>Mathematics on the Web...</h2>
+<p> Currently, mathematical documents (and mathematically robust
+technical documents in general) are generally encoded in TeX, a technical
+typesetting language. TeX, however, does not live within the Internet
+paradigm - As the Internet grows as a pedagogical tool, so does the need for
+mathematical notation to be embedded as an element of a standard web
+document. </p>
+<p> The solutions currently used are not palatable to the user with
+visual disabilities. The inclusion of GIF images (screen shots taken
+from some mathematical authoring tool) is most often
+entirely inaccessible, with the rare exception that the author includes
+some meaningful ALT text, in which case the description's linguistic conventions
+change from author to author. The linking of documents encoded in Postscript
+is less accessible still, where no ALT text can possibly be included.
+Luckily, these options are not palatable to visual users either, due
+to the need for additional software, or simply the awkwardness of the
+presentation.</p>
+<p> The most likely replacement for these approaches is MathML, the W3C's
+new XML language for mathematical expressions. MathML is a fully robust
+markup for mathematical expressions, capable of visually presenting
+virtually any mathematical notation. It also promises full support
+within the near future, evident from the claims of the producers
+of popular browsers (Indeed, Netscape's beta browser Mozilla already
+includes a near-complete implementation), and from plug-ins capable of
+rendering the mark-up, such as IBM's Techexplorer Hypermedia Browser.
+Given that MathML promises to soon
+be the standard for mathematical notation on the web, accessibility
+becomes a crucial matter. Accessibility of the content should be
+ensured prior to MathML becoming a commonly used tool in
+education and academics.</p>
+
+<h2>Current Status of MathML Accessibility...</h2>
+<p> The general XML philosophy can be summarized as "the separation of content from
+presentation" - from the viewpoint of accessibility, this
+is an exciting idea. In this separation, the possibility exists that
+content can be easily obtained and presented in a manner suitable
+for speech output, Haptics, etc. "The W3C's commitment to lead the Web to its
+full potential includes promoting a high degree of usability for
+people with disabilities"<sup>5</sup>, unfortunately, is not
+easily extended to MathML. The visual nature of mathematical
+notation has made it too difficult to distinguish between content and presentation.
+While it may be possible for some simple cases, like single-variable
+calculus where notation is centuries old and common, modern mathematicians
+often invent their own notation for their immediate needs. </p>
+
+<p> Current Screen Readers are simply not designed to deal with this sort
+of input. Consider the following scenario: A visually disabled user
+is accessing a web page using a standard screen reader,
+and a popular browser. Within that page, the author has
+included an equation, say:</pr>
+<center><img src=eq1.gif alt="GIF image of the unnormalized standard Gaussian"></center>
+<p> The MathML is detected, and presented visually. The screen reader comes across
+the visual representation, and reads those symbols which it recognizes:
+<i>"plus minus x 2 e 2 dx minus"</i>, i.e. a linear reading of all
+the common symbols. Unfortunate as this is, it is the reality
+of the situation. There is no commonly available tool at present for presenting MathML
+accessibly(**).</p>
+
+
+<h2>The Challenges for Accessible Mathematics...</h2>
+<p> The difficulties in presenting mathematics in an auditory
+modality are daunting. Putting aside the need for the creation
+of a mostly new natural language notation, which agrees with the
+existing incomplete one, one quickly discovers challenges:</p>
+
+<p> <b>Two-Dimensional Formatting: </b>
+Mathematical notation is designed for visual elegance. In doing
+so, mathematicians use a two-dimensional notation. This includes the
+extensive use of superscripts and subscripts, elements layered on top of
+each other, hats and arrows, etc. This sort of problem becomes immediately
+visible when one attempts to read a two-dimensional matrix aloud. Consider
+the equation given above: a non-ambiguous reading would need to be
+something along the lines of <i>"The integral from minus infinity to positive
+infinity of begin-scope e to the power of begin-scope the fraction numerator
+negative x raised 2 denominator 2 end-scope dx end-scope"</i>. In these sorts
+of situations, the content of the expression is quickly obscured by the
+sheer mass of formatting information.</p>
+
+<p> <b>Separation of Content and Presentation: </b>
+Although MathML contains a content markup, a robust
+reading mechanism cannot assume its use; The need to read
+expressions which lie outside of the content markup scope, and
+the likely possibility that MathML authoring tools will produce
+presentation markup when not strictly necessary guarantee this.
+But, presentation markup is widely ambiguous: For example, f(a+b) might
+mean "f multiplied by a plus b", or it might mean
+"the function f applied to a plus b". Z/2 might mean "one-half zed",
+or it might mean "The integers modulo 2". In general, with no assumptions
+about context, an automated process can do no better than simply read
+a mathematical expression symbol by symbol. Consider the first example
+again: <i>"Elongated s superscript (plus infinity-sign) subscript (minus infinity-sign)
+e superscript ((minus x superscript 2) over 2) d x"</i>. Again the length of the
+expression obscures its content, and fails to agree with existing conventions
+for mathematical speech.</p>
+
+<p> <b>Active vs. Passive Access: </b>
+When a user visually examines a mathematical expression, he possesses a great deal of control
+over his attention. He may first scan the entire equation, then focus on whichever components
+he wishes. However, the user listening to a speech synthesizer does not have this level of control.
+Stevens and Edwards note that "Listening is essentially a passive process and users of taped
+books often complain of lapses in concentration and an overwhelming amount of information to
+try to remember... Reading often defaults to a passive reception of information at a
+pace dictated by speech"<sup>1</sup>. Raman writes that "The speaker (perhaps on an audio cassette)
+reads in a relentless linear fashion, from beginning to end, and the listener simply listens,
+with little control over the process"<sup>2</sup>. Mathematical equations are notorious for reaching great
+length and complexity - a user needs the ability to easily reread an expression as many times as he
+desires, and the option of breaking down that equation into "chunks" - that is, to have the ability
+to analyze the surface structure of an expression, then delve into the details of the components.</p>
+
+<h2>The Solutions...</h2>
+<p> Solutions for these challenges do exist, and in fact have been implemented.
+T.V. Raman's ASTER<sup>3</sup> contains all of the following features, and MathTalk<sup>1</sup>
+implements some of the prosody and browsing utilities. These systems are not designed for MathML, however,
+and do not readily lend themselves to the Web Browser-Screen Reader paradigm. The conventions
+implemented within these systems, however, will be emulated in the discussed system.</p>
+
+<p> <b>Audio Formatted Natural Language: </b>
+The problem of emulating two-dimensional notation in a linear format may
+be approached by artificially adding another dimension to the audio output.
+By controlling the prosody (pitch, rate of speech, etc.), different "modes"
+of notation may be encoded without explicit linguistic indicators. For example,
+superscripts may be spoken in a higher pitch, subscripts lower. Consider the following
+example:</p>
+<center><a href=eraisedcomp.wav><img src=eraisedcomp.gif alt="Image of expression e raised minus x plus y raised 2 z. Select to hear audio"></a></center>
+<p> Selecting the image will play a proposed audio output for that expression, formatted
+according to the preceding rules. Note that explicit indications for
+scope were not necessary. Stevens and Edwards, in discussion of MathTalk, note that "the effects of prosody
+were... evaluated experimentally and shown to promote the recovery of syntactic structure, enhance
+the retention of lexical content and reduce the mental workload involved".</p>
+
+<p> <b>User Context Selection: </b>
+The separation of content and presentation problem may be dealt with using a mechanism
+for user context selection: That is, a process by which pattern-matching rules may be added
+to the system. These pattern-matching rules would find common occurrences and replace them with
+meaningful short-cuts. For example, Z/2 with no assumptions must be read "Z over 2". If the user
+realizes that the given context of a paper is arithmetic, he might load a set of arithmetic rules,
+which might contain the rule */2 -> "one-half *". At this point, the system would read "one-half z",
+leading to a more immediate recognition. The need exists for pre-defined context rule sets for
+all the major fields of mathematics, as well as the inclusion of a routine for user-defined rule sets.
+Through this means, a user could respond to a new or unsupported field of mathematics by creating
+his own set of rules, with which he could hear a set of documents.</p>
+
+<p> <b>Document Browsing: </b>
+While audio formatting might aid in the grasping of syntactic structure, it is
+not sufficient to introduce a robust mechanism for the processing of mathematical
+notation. The need to return control over the pace and order of the reading
+is essential - one way to accomplish this is through a "document Tokenizer", that is,
+a mechanism for breaking up a document into smaller and logically ordered chunks, more
+simply processed by a listener. In adding the ability to browse those tokens in any order,
+the listener is transferred into an active role, controlling which elements are re-read
+and which are skipped. </p>
+
+<h2>Extensions to IBM's Techexplorer...</h2>
+<p> Let us reconsider the initial scenario. The user is browsing a web page containing
+a MathML expression, which is recognized by the Techexplorer plug-in, and alerts
+her of the existence of a mathematical expression. The user then activates
+the reading utility, which:</p>
+<ul>
+  <li> Parses the page, breaking up the file into tokens (either on the basis of
+  each formula, or some finer division)</li>
+  <li> Applies any selected contexts (existing or user defined files containing rules for
+  pattern matching and replacement) to the
+  mathematical tokens, replacing patterns of presentation tags with other
+  more meaningful elements</li>
+  <li> Formats the mathematical tokens according to some standard set of audio
+  (prosody) formatting rules</li>
+  <li> Creates player controls for those tokens </li>
+</ul>
+<p> At this point our user may activate the tokens (i.e. command them to be read), one by one, or
+ask that the entire document be read. She may also reread tokens, cycle forward or backward
+through those tokens, or load some new (pre-defined or immediately created) context to deal
+with the MathML.</p>
+<p> Through the parsing of the document, Techexplorer hopes to provide some rudimentary
+active listening to the user, returning some of the control lost in the use of a
+passive medium. The use of audio formatting will recreate some of the
+visual elegance lost in conversion to linear form. Inclusion of context-selection
+routines can provide the user means of escaping the presentation markup, both
+through standard included sets of rules, and through user-defined sets tailored for particular
+cases.</p>
+
+<h2>About the Extension...</h2>
+<p> The extension consists of four steps:</p>
+<ul>
+  <li> Subdivision of the MathML components into tokens</li>
+  <li> Applying context rules to those tokens</li>
+  <li> Transforming those tokens into an Audio Formatted Natural Language (AFNL)</li>
+  <li> Transmitting those results to a reader </li>
+</ul>
+<p> The subdivision into tokens will be a highly customizable process. Although a default
+procedure will be included, that is, one which simply breaks up a document according
+to formulas, it is expected that users will prefer a finer level of division. The extension will
+support user-customized general rules, as well as real-time settings for this step.</p>
+<p> Both the application of context rules, and the transformation of tokens into AFNL will
+consist of an XSL transformation. These transformations will either use one of the base included
+system stylesheets, or any stylesheet provided by the user. While Techexplorer is a
+proprietary system, these stylesheets will be free and publicly available.</p>
+<p>
+The final step is the transmission of the resulting AFNL to a speech synthesizer.
+The extension is primarily intended for use with IBM's ViaVoice Speech System, and the
+Techexplorer user interface will include accessible controls for transmitting to this system.
+Additionally, Techexplorer will be packaged with a public API - this API will
+include procedures for the conversion of MathML to several AFNLs, including CSS 2-augmented
+XHTML.</p>
+
+<h2>Future Prospects...</h2>
+<p>The procedure above is specifically designed to support standardization within the
+realm of spoken mathematics. The public availability of the stylesheets will allow
+not only for user customization of the audio rendering rules, but also for use in
+other forthcoming audio mathematics systems - if used, clients need not deal
+with differing audio presentations between software packages. The addition of a public API
+will allow for easy inclusion of the audio rendering within other self-voicing
+applications, again allowing for standardization, and for the inclusion of
+audio mathematics into systems where previously this was an impossibility.</p>
+<p>Additionally, the public stylesheet system is particularly suited for
+online resource sharing. It is hoped that in the future there may exist some public repository
+where students and educators may share their customizations for the various
+branches of mathematics and notations.</p>
+
+<hr>
+<p> (*) - Dr. Angel Diaz, Watson Research; Dr. T. V. Raman, Almadan Research<br>
+(**) - Some work is currently underway. MAVIS is currently developing a MathML to
+Nemeth Braille code converter<sup>4</sup></p>
+
+<h2>References...</h2>
+<ol>
+  <li> Edwards, A., Stevens, R. <u>Mathtalk: Usable Access to Mathematics</u>, (University of York; 1994; http://www.rit.edu/~easi/itd/itdv01n4/article5.html)</li>
+  <li> Hayes, B. <u>Speaking of Mathematics</u>, (American Scientist; March-April 1996)</li>
+  <li> Raman, T.V. <u>Audio System for Technical Readings</u>, (PhD. Thesis, Cornell University; 1994; http://www.cs.cornell.edu/home/raman/)</li>
+  <br><b>Web References:</b>
+  <li> <u>IBM Techexplorer Product Page</u>, (18.12.00;http://www-4.ibm.com/software/network/techexplorer/)</li>
+  <li> <u>Scientific Notebook to Nemeth Code Converter (c)</u>, (21.10.98; http://www.nmsu.edu/~mavis/converter.html)</li>
+  <li> <u>Web Accessibility Initiative (WAI) Home Page</u>, (22.09.00; http://www.w3.org/WAI/)</li>
+  <li> <u>W3C Math Home Page</u>, (02.06.00; http://www.w3.org/Math/)</li>
+</ol>
+
+<i>The author would like to thank: Network Ontario's Telecommunication Access
+Partnerships (Ontario Ministry of Energy, Science and Technology) for their funding
+contribution for the ATRC NIDE project. For further information about the NIDE project,
+please visit <a href=http://nide.snow.idrc.ocadu.ca>http://nide.snow.utoronto.ca</a>.</i>
+
+</body></html>

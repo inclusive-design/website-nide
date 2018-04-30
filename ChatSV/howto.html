@@ -1,0 +1,200 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>ATRC Self Voicing Chat: How to use the chat</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr width="50%">
+
+<h1 align="center">ATRC Self Voicing Chat</h1>
+
+<hr width="50%">
+
+<h2 align="center"><a name="top"></a>How to use the Chat</h2>
+
+<p>The ATRC Self Voicing Chat is an IRC chat client, that will
+allow you to connect to any IRC chat server, and join channels,
+just like other IRC chat client. It is designed as an example of
+using the SVK to voice a chat, and as such, it does not fully
+implement the IRC protocol. There are some typical IRC functions
+that are not available:</p>
+
+<ul>
+    <li>multiple channels</li>
+    <li>topic changing</li>
+    <li>mode changing</li>
+    <li>private stuff</li>
+    <li>actions</li>
+    <li>obtaining information about other users</li>
+</ul>
+
+<h3>Where Am I?</h3>
+
+<p>At any time, press F4 to hear a description of the current
+status of the chat, including:</p>
+
+<ul>
+    <li>currently entered nickname</li>
+    <li>current server, if any</li>
+    <li>current channel, if any</li>
+</ul>
+
+<h3><a name="using"></a>Using the Chat</h3>
+
+<p>Using the chat is very simple. The window is divided into four
+sections, which are described below. The four sections are:</p>
+
+<ul>
+    <li><a href="#conn">Connection</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#users">Users</a></li>
+    <li><a href="#chat">Chat</a></li>
+</ul>
+
+<p align="center"><img src="screen.jpg"
+alt="screen shot of self voicing chat window" align="middle"
+width="640" height="481" longdesc="screen-desc.html"></p>
+
+<h3 align="left"><a name="conn"></a>Connection</h3>
+
+<p align="left">The Connection section provides a drop-down list
+of IRC servers, or you can type in an address yourself. There is
+a text entry field for your nickname, and Connect/Disconnect
+buttons.</p>
+
+<dl>
+    <dt><img src="connect.jpg"
+        alt="connection portion of chat screen" align="right"
+        hspace="0" width="213" height="203"
+        longdesc="connect-desc.html">Server:</dt>
+    <dd><p align="left">A drop-down list of some available
+        servers. You can also type in the name of a server</p>
+    </dd>
+    <dt>Nickname:</dt>
+    <dd><p align="left">A text field to allow you to enter a
+        nickname. You must have a nickname to connect to a server</p>
+    </dd>
+    <dt>Connect:</dt>
+    <dd><p align="left">This button will connect you to the
+        selected server</p>
+    </dd>
+    <dt>Disconnect:</dt>
+    <dd><p align="left">This button will disconnect you from the
+        current server</p>
+    </dd>
+</dl>
+
+<p align="left"><a href="#using">return to How to use the chat</a></p>
+
+<h3 align="left"><a name="rooms"></a>Channels</h3>
+
+<p align="left">The Rooms section contains a list of channels
+available on the current server. This list is filled upon
+connection to a server. To join a room, select from the list, or
+type the channel name into the text entry field, and select Join.
+To part the current channel, select Part.</p>
+
+<dl>
+    <dt><img src="channels.jpg"
+        alt="channels section of chat screen" align="right"
+        hspace="0" width="249" height="201"
+        longdesc="channels-desc.html">Channel:</dt>
+    <dd><p align="left">A text field to allow you to enter a
+        channel name.</p>
+    </dd>
+    <dt>Available Channels:</dt>
+    <dd><p align="left">A list of channels currently available on
+        this server. You can also type in the name of a channel
+        (preceded by '#')</p>
+    </dd>
+    <dt>Join:</dt>
+    <dd><p align="left">This button will add you to the specified
+        channel</p>
+    </dd>
+    <dt>Part:</dt>
+    <dd><p align="left">This button will remove you from the
+        current channel</p>
+    </dd>
+</dl>
+
+<p align="left"><a href="#using">return to How to use the chat</a></p>
+
+<h3 align="left"><a name="users"></a>Users</h3>
+
+<p align="left"><img src="users.jpg"
+alt="users section of chat window" align="right" hspace="0"
+width="169" height="201" longdesc="users-desc.html">The Users
+section contains a list of user nicknames currently part of the
+channel. This list is updated as user join and part the channel.</p>
+
+<dl>
+    <dt>Users:</dt>
+    <dd><p align="left">A list of users currently on the the
+        current channel. This list is updated as users join and
+        part the channel.</p>
+    </dd>
+</dl>
+
+<p align="left"><a href="#using">return to How to use the chat</a></p>
+
+<h3 align="left"><a name="chat"></a>Chat</h3>
+
+<p align="left">The Chat section contains a window which displays
+the actual chat, and a text entry field for you to type your
+messages. To send a message to the chat, simply type it in the
+entry field and press Enter.</p>
+
+<dl>
+    <dt>Message:</dt>
+    <dd><p align="left">A text field allowing you to type in a
+        message to send to the chat.</p>
+    </dd>
+</dl>
+
+<p align="center"><img src="chat.jpg"
+alt="chat display portion of the window" align="middle"
+width="628" height="249" longdesc="chat-desc.html"></p>
+
+<p align="left"><a href="#using">return to How to use the chat</a></p>
+
+<h2><a name="voicing"></a>Voicing</h2>
+
+<p>The Chat uses the IBM Self Voicing Kit to 'voice' itself. This
+means that voice output will describe where the current focus is,
+and what is happening in the chat window. Specifically:</p>
+
+<ul>
+    <li>when focus changes to a new component, the component will
+        be described</li>
+    <li>when a message is received by the chat from one of the
+        users, it will be spoken out loud, preceded by the user's
+        nickname</li>
+</ul>
+
+<p><a href="#top">return to top</a></p>
+
+<h2>Accessibility</h2>
+
+<p>The Chat interface is designed in keeping with accessible user
+interface design principles. This means that all fields can be
+focussed using the Tab key or through their keyboard 'hot-key',
+and all buttons, etc. have 'hot-keys'.</p>
+
+<p align="center"><font size="2">[</font><a href="index.html"><font
+size="2">Home</font></a><font size="2">] [</font><a
+href="setup.html"><font size="2">Requirements and Setup</font></a><font
+size="2">] [How to use the chat] [</font><a href="trychat.html"><font
+size="2">Try the Chat</font></a><font size="2">] [</font><a
+href="devinfo.html"><font size="2">Technical Information</font></a><font
+size="2">]</font></p>
+
+<hr>
+
+<p><font size="2">Page modified: July 27, 1999</font></p>
+</body>
+</html>
